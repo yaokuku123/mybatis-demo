@@ -33,4 +33,7 @@ public interface UserMapper {
 
     //根据用户名和密码查询(万能Map)
     User selectByMap(Map<String,Object> map);
+
+    //分页查询
+    List<User> selectUserByPage(Map<String,Integer> map);
 }

@@ -38,4 +38,8 @@
         select * from user where name=#{username} and pwd=#{password}
     </select>
 
+    <!--分页查询-->
+    <select id="selectUserByPage" resultType="com.yqj.pojo.User">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
 </mapper>

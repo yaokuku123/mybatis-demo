@@ -94,4 +94,19 @@ public class MyTest {
         System.out.println(user);
         session.close();
     }
+
+    //分页查询
+    @Test
+    public void testSelectUserByPage(){
+        SqlSession session = MybatisUtils.getSession();
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        Map<String,Integer> map = new HashMap<>();
+        map.put("startIndex",1);
+        map.put("pageSize",2);
+        List<User> users = mapper.selectUserByPage(map);
+        for (User user : users) {
+            System.out.println(user);
+        }
+        session.close();
+    }
 }
