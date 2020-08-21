@@ -4,4 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yqj.dao.TeacherMapper">
 
+    <resultMap id="OneToMany" type="Teacher">
+        <id property="id" column="tid"/>
+        <result property="name" column="tname"/>
+        <collection property="students" ofType="Student">
+            <id property="id" column="sid"/>
+            <result property="name" column="sname"/>
+        </collection>
+    </resultMap>
+
+    <select id="getTeacher" resultMap="OneToMany">
+        select t.id tid,t.name tname,s.id sid,s.name sname
+        from teacher t,student s
+        where s.tid = t.id  and t.id = #{id}
+    </select>
+
 </mapper>
